@@ -133,6 +133,7 @@ onUnmounted(() => {
   }
 });
 
+// this actually extra extra codes, you actually know what you doing ;)
 const validateRow = (row) => {
   const requiredFields = ['time', 'temperature', 'vibration', 'strain', 'pressure', 'acousticemission', 'bladehealthscore'];
   const missingFields = requiredFields.filter(field => !(field in row));
@@ -183,6 +184,7 @@ const healthAnalysis = computed(() => {
   let failureProbability = 0;
   let remainingCycles = 'Unknown';
 
+//this is random value, adjust as you need for your project ;)
   if (avgHealth < 51 || maxTemp > 555) {
     status = 'Warning';
     failureProbability = ((55 - avgHealth) * 2).toFixed(1);
