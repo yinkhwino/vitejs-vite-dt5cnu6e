@@ -112,7 +112,24 @@
 
       <div class="flex-grow">
         <router-view v-if="$route.path !== '/'" />
-        <Order v-else />
+        <div role="tablist" class="tabs tabs-lifted">
+          <input type="radio" name="subnetwork" role="tab" class="tab" aria-label="Compressor" />
+            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                
+                <div><Order /></div>
+            </div>
+
+          <input type="radio" name="subnetwork" role="tab" class="tab" aria-label="Turbine" checked="checked" />
+            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                Tab content 2
+            </div>
+
+          <input type="radio" name="subnetwork" role="tab" class="tab" aria-label="Combustor" />
+            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                Tab content 3
+            </div>
+        </div>
+        
       </div>
 
       <footer class="footer footer-center p-4 bg-[#0B2265] text-white">
