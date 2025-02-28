@@ -81,7 +81,7 @@
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
           <h3 class="card-title">Status: {{ healthAnalysis.status }}</h3>
-          <p>Failure Probability: {{ healthAnalysis.failureProbability }}%</p>
+          <p>Failure Probability: {{ healthAnalysis.failureProbability }} </p>
           <p>Estimated Remaining Cycles: {{ healthAnalysis.remainingCycles }}</p>
           <p>Last Analysis: {{ new Date().toLocaleString() }}</p>
           
@@ -299,6 +299,7 @@ const exportToCSV = () => {
   document.body.removeChild(link);
   window.URL.revokeObjectURL(url);
 };
+
 </script>
 
 <style scoped>
