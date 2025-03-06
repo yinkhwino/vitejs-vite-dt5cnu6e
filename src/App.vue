@@ -1,4 +1,8 @@
 <template>
+<!--please add Dashboard component here and disabled my Login form 
+- <div class="auth-container">.....</div>
+add <Dashboard />
+-->
   <div class="auth-container">
     <div v-if="error" class="alert alert-error">
       <span>{{ error }}</span>
