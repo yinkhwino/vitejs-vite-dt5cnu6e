@@ -115,26 +115,7 @@ add <Dashboard />
       </div>
 
       <div class="flex-grow">
-        <router-view v-if="$route.path !== '/'" />
-        <div role="tablist" class="tabs tabs-lifted">
-          <input type="radio" name="subnetwork" role="tab" class="tab" aria-label="Compressor" />
-            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                
-                <div><Order /></div>
-            </div>
-
-          <input type="radio" name="subnetwork" role="tab" class="tab" aria-label="Turbine" checked="checked" />
-            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                Tab content 2
-            </div>
-
-          <input type="radio" name="subnetwork" role="tab" class="tab" aria-label="Combustor" />
-            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                Tab content 3
-            </div>
-        </div>
-        
-      </div>
+        <router-view v-if="$route.path !== '/'" /><div v-else><BladeAnalysis /></div>
 
       <footer class="footer footer-center p-4 bg-[#0B2265] text-white">
         <aside>
@@ -149,12 +130,9 @@ add <Dashboard />
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { supabase } from './lib/supabaseClient';
-import Order from './components/Order.vue';
-import PlanePart from './components/PlanePart.vue';
 
 const router = useRouter();
 const authLoading = ref(false);
-const loading = ref(false);
 const email = ref('');
 const password = ref('');
 const error = ref('');
@@ -169,7 +147,7 @@ onMounted(async () => {
     
     if (session) {
       user.value = session.user;
-      await loadInventory();
+      
     }
 
     // Listen for auth changes
@@ -255,28 +233,7 @@ const signIn = async () => {
   }
 };
 
-const loadInventory = async () => {
-  if (!user.value) return;
-  
-  loading.value = true;
-  error.value = null;
-  
-  try {
-    const { data, error: queryError } = await supabase
-      .from('components')
-      .select('*')
-      .eq('user_id', user.value.id)
-      .order('created_at');
 
-    if (queryError) throw queryError;
-    components.value = data || [];
-  } catch (err) {
-    console.error('Error loading components:', err);
-    error.value = 'Error loading components: ' + err.message;
-  } finally {
-    loading.value = false;
-  }
-};
 
 const signOut = async () => {
   try {
