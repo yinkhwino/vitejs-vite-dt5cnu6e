@@ -9,7 +9,9 @@ Program for calculating the optimal time to order plane parts involves consideri
 
 Here’s a simplified approach:  
 • PlanePart Interface: Defines the structure of a part in the inventory, including key metrics for ordering decisions. 
+
 14-feb: migrations of components 
+15-28feb: AI models development 
 
 • Order Interface: Defines what an order looks like (part number and quantity).
 
@@ -22,3 +24,14 @@ As per my simple aeroplane case analysis, Blade parts will have estimated lead t
 
 • shouldOrder: Checks if the current stock level suggests an order should be made.
 • suggestOrders: Looks at all parts and returns an array of suggested orders.
+
+@tanstack dependencies 
+
+|package.json 
+Add "dependencies": {"@supabase/supabase-js": "^2.39.7", "@tanstack/vue-query": "^5.28.4", "axios": "^1.6.7",}
+|src
+    |App.vue 
+    |components / ChatWidget.vue 
+    |components / ParametersForm.vue
+    |views/ Dashboard.vue 
+    |Server.js 
