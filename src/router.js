@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import PlanePart from './components/PlanePart.vue'
 import Order from './components/Order.vue'
+import BladeAnalysis from './components/BladeAnalysis.vue';
 
 const routes = [
-  { path: '/', component: PlanePart },
+  { path: '/', component: BladeAnalysis},
   { path: '/order', component: Order },
 ]
 
